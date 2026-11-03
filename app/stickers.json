@@ -1,0 +1,194 @@
+[
+ {
+  "id": "rasode",
+  "pack": "desi",
+  "caption": "Rasode mein kaun tha?",
+  "img": "stickers/rasode.webp",
+  "sound": "sounds/rasode.mp3",
+  "dur": 3.4
+ },
+ {
+  "id": "kya-ho-raha",
+  "pack": "desi",
+  "caption": "Ye kya ho raha hai?",
+  "img": "stickers/kya-ho-raha.webp",
+  "sound": "sounds/kya-ho-raha.mp3",
+  "dur": 2.33
+ },
+ {
+  "id": "bhai-kya-kar",
+  "pack": "desi",
+  "caption": "Bhai kya kar raha hai tu?",
+  "img": "stickers/bhai-kya-kar.webp",
+  "sound": "sounds/bhai-kya-kar.mp3",
+  "dur": 1.91
+ },
+ {
+  "id": "paisa",
+  "pack": "desi",
+  "caption": "Paisa hi paisa hoga",
+  "img": "stickers/paisa.webp",
+  "sound": "sounds/paisa.mp3",
+  "dur": 2.21
+ },
+ {
+  "id": "moye-moye",
+  "pack": "desi",
+  "caption": "Moye moye",
+  "img": "stickers/moye-moye.webp",
+  "sound": "sounds/moye-moye.mp3",
+  "dur": 2.24
+ },
+ {
+  "id": "bas-kar-pagle",
+  "pack": "desi",
+  "caption": "Bas kar pagle, rulayega kya?",
+  "img": "stickers/bas-kar-pagle.webp",
+  "sound": "sounds/bas-kar-pagle.mp3",
+  "dur": 3.5
+ },
+ {
+  "id": "khush-bahut",
+  "pack": "desi",
+  "caption": "Aaj khush toh bahut hoge tum",
+  "img": "stickers/khush-bahut.webp",
+  "sound": "sounds/khush-bahut.mp3",
+  "dur": 1.77
+ },
+ {
+  "id": "control-uday",
+  "pack": "desi",
+  "caption": "Control Uday, control!",
+  "img": "stickers/control-uday.webp",
+  "sound": "sounds/control-uday.mp3",
+  "dur": 1.8
+ },
+ {
+  "id": "utha-le",
+  "pack": "desi",
+  "caption": "Utha le re baba",
+  "img": "stickers/utha-le.webp",
+  "sound": "sounds/utha-le.mp3",
+  "dur": 2.25
+ },
+ {
+  "id": "maza-aayega",
+  "pack": "desi",
+  "caption": "Abhi maza aayega na bhidu",
+  "img": "stickers/maza-aayega.webp",
+  "sound": "sounds/maza-aayega.mp3",
+  "dur": 1.62
+ },
+ {
+  "id": "kehna-kya",
+  "pack": "desi",
+  "caption": "Kehna kya chahte ho?",
+  "img": "stickers/kehna-kya.webp",
+  "sound": "sounds/kehna-kya.mp3",
+  "dur": 1.86
+ },
+ {
+  "id": "bahut-hard",
+  "pack": "desi",
+  "caption": "Bahut hard!",
+  "img": "stickers/bahut-hard.webp",
+  "sound": "sounds/bahut-hard.mp3",
+  "dur": 1.92
+ },
+ {
+  "id": "bruh",
+  "pack": "og",
+  "caption": "Bruh.",
+  "img": "stickers/bruh.webp",
+  "sound": "sounds/bruh.mp3",
+  "dur": 1.5
+ },
+ {
+  "id": "emotional-damage",
+  "pack": "og",
+  "caption": "Emotional damage!",
+  "img": "stickers/emotional-damage.webp",
+  "sound": "sounds/emotional-damage.mp3",
+  "dur": 2.46
+ },
+ {
+  "id": "sheesh",
+  "pack": "og",
+  "caption": "Sheeesh",
+  "img": "stickers/sheesh.webp",
+  "sound": "sounds/sheesh.mp3",
+  "dur": 1.0
+ },
+ {
+  "id": "oh-no",
+  "pack": "og",
+  "caption": "Oh no no no no",
+  "img": "stickers/oh-no.webp",
+  "sound": "sounds/oh-no.mp3",
+  "dur": 3.39
+ },
+ {
+  "id": "to-be-continued",
+  "pack": "og",
+  "caption": "To be continued...",
+  "img": "stickers/to-be-continued.webp",
+  "sound": "sounds/to-be-continued.mp3",
+  "dur": 1.85
+ },
+ {
+  "id": "stonks",
+  "pack": "og",
+  "caption": "Stonks",
+  "img": "stickers/stonks.webp",
+  "sound": "sounds/stonks.mp3",
+  "dur": 2.11
+ },
+ {
+  "id": "this-is-fine",
+  "pack": "og",
+  "caption": "This is fine.",
+  "img": "stickers/this-is-fine.webp",
+  "sound": "sounds/this-is-fine.mp3",
+  "dur": 1.85
+ },
+ {
+  "id": "sus",
+  "pack": "og",
+  "caption": "Kinda sus",
+  "img": "stickers/sus.webp",
+  "sound": "sounds/sus.mp3",
+  "dur": 1.44
+ },
+ {
+  "id": "aura",
+  "pack": "og",
+  "caption": "Aura +1000",
+  "img": "stickers/aura.webp",
+  "sound": "sounds/aura.mp3",
+  "dur": 2.19
+ },
+ {
+  "id": "skill-issue",
+  "pack": "og",
+  "caption": "Skill issue",
+  "img": "stickers/skill-issue.webp",
+  "sound": "sounds/skill-issue.mp3",
+  "dur": 2.14
+ },
+ {
+  "id": "delulu",
+  "pack": "og",
+  "caption": "Delulu is the solulu",
+  "img": "stickers/delulu.webp",
+  "sound": "sounds/delulu.mp3",
+  "dur": 1.36
+ },
+ {
+  "id": "six-seven",
+  "pack": "og",
+  "caption": "6 7",
+  "img": "stickers/six-seven.webp",
+  "sound": "sounds/six-seven.mp3",
+  "dur": 1.6
+ }
+]
