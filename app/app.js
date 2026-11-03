@@ -1,4 +1,4 @@
-/* Bolti: chat demo with sound stickers. Plain JS, no build step. Chats live in localStorage,
+/* StickerSounds: chat demo with sound stickers. Plain JS, no build step. Chats live in localStorage,
    your own stickers (image + sound blobs) in IndexedDB, so nothing leaves the device. */
 'use strict';
 const $ = s => document.querySelector(s);
@@ -23,8 +23,8 @@ const REPLIES = { desi: ['😂😂😂', 'Bhai 💀', 'Hahaha sahi hai', 'Ye toh
   og: ['LMAO', '💀💀', 'No way 😂', 'The sound sends me', 'Okay that one got me', 'Again again'] };
 
 let STICKERS = [], BYID = {}, MINE = [], db, cur = null, tab = 'desi';
-let autoPlay = localStorage.getItem('bolti.auto') !== '0';
-const store = { get: id => JSON.parse(localStorage.getItem('bolti.chat.' + id) || 'null'), set: (id, m) => localStorage.setItem('bolti.chat.' + id, JSON.stringify(m)) };
+let autoPlay = localStorage.getItem('stickersounds.auto') !== '0';
+const store = { get: id => JSON.parse(localStorage.getItem('stickersounds.chat.' + id) || 'null'), set: (id, m) => localStorage.setItem('stickersounds.chat.' + id, JSON.stringify(m)) };
 
 /* ---------- sound ---------- */
 let playing = null;
@@ -41,7 +41,7 @@ function play(stickerId, node) {
 
 /* ---------- storage for your own stickers ---------- */
 function openDB() {
-  return new Promise((res, rej) => { const r = indexedDB.open('bolti', 1);
+  return new Promise((res, rej) => { const r = indexedDB.open('stickersounds', 1);
     r.onupgradeneeded = () => r.result.createObjectStore('mine', { keyPath: 'id' });
     r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
 }
@@ -112,7 +112,7 @@ function openChat(id) {
   $('#chatName').textContent = cur.name; $('#chatSub').textContent = cur.sub;
   const av = $('#chatAvatar'); av.textContent = cur.avatar; av.style.background = cur.bg;
   renderMsgs(); renderList(); closeTray();
-  localStorage.setItem('bolti.last', id);
+  localStorage.setItem('stickersounds.last', id);
 }
 $('#backBtn').onclick = () => { $('#app').classList.remove('inchat'); closeTray(); };
 
@@ -141,7 +141,7 @@ function renderTray() {
     grid.appendChild(b); });
 }
 function setSoundBtn() { $('#soundBtn').textContent = autoPlay ? '🔊' : '🔇'; $('#soundBtn').title = autoPlay ? 'Sticker sounds auto-play (tap to mute)' : 'Sticker sounds muted (tap a sticker to play)'; }
-$('#soundBtn').onclick = () => { autoPlay = !autoPlay; localStorage.setItem('bolti.auto', autoPlay ? '1' : '0'); setSoundBtn(); };
+$('#soundBtn').onclick = () => { autoPlay = !autoPlay; localStorage.setItem('stickersounds.auto', autoPlay ? '1' : '0'); setSoundBtn(); };
 $('#infoBtn').onclick = () => $('#about').showModal();
 
 /* ---------- sticker maker ---------- */
@@ -190,7 +190,7 @@ $('#makerForm').onsubmit = async e => {
   STICKERS = await (await fetch('stickers.json')).json(); STICKERS.forEach(s => BYID[s.id] = s);
   try { db = await openDB(); await loadMine(); } catch (e) { console.warn('IndexedDB unavailable', e); }
   setSoundBtn(); renderList();
-  if (!matchMedia('(max-width:760px)').matches) openChat(localStorage.getItem('bolti.last') || 'gang');
-  if (!localStorage.getItem('bolti.seen')) { localStorage.setItem('bolti.seen', '1'); $('#about').showModal(); }
+  if (!matchMedia('(max-width:760px)').matches) openChat(localStorage.getItem('stickersounds.last') || 'gang');
+  if (!localStorage.getItem('stickersounds.seen')) { localStorage.setItem('stickersounds.seen', '1'); $('#about').showModal(); }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 })();

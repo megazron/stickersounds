@@ -1,6 +1,6 @@
 {
-  "name": "Bolti: stickers that talk",
-  "short_name": "Bolti",
+  "name": "StickerSounds: stickers that talk",
+  "short_name": "StickerSounds",
   "description": "Chat demo where stickers come with sound.",
   "start_url": "./",
   "scope": "./",

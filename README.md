@@ -1,12 +1,12 @@
-# Bolti · stickers that talk
+# StickerSounds · stickers that talk
 
 **Sticker bhejo, awaaz ke saath.** A chat web app demo where every sticker carries its own sound.
 
-Chat stickers are silent, and half the fun of a meme is the sound. Bolti shows one small idea: a **sound sticker** is
+Chat stickers are silent, and half the fun of a meme is the sound. StickerSounds shows one small idea: a **sound sticker** is
 just a normal sticker image (512×512 WebP, the usual chat sticker format) plus a short audio clip. Send it and it plays
 once for everyone in the chat. Tap it to play it again. Mute auto-play with the speaker button.
 
-**Try it:** https://megazron.github.io/bolti/ (works on phone and desktop, installable as an app, works offline)
+**Try it:** https://megazron.github.io/stickersounds/ (works on phone and desktop, installable as an app, works offline)
 
 | Desktop | Phone |
 |---|---|
