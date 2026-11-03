@@ -96,6 +96,102 @@
   "dur": 1.92
  },
  {
+  "id": "tumse-na-ho",
+  "pack": "trend",
+  "caption": "Tumse na ho payega",
+  "img": "stickers/tumse-na-ho.webp",
+  "sound": "sounds/tumse-na-ho.mp3",
+  "dur": 3.44
+ },
+ {
+  "id": "kitne-aadmi",
+  "pack": "trend",
+  "caption": "Kitne aadmi the?",
+  "img": "stickers/kitne-aadmi.webp",
+  "sound": "sounds/kitne-aadmi.mp3",
+  "dur": 3.01
+ },
+ {
+  "id": "dil-se-bura",
+  "pack": "trend",
+  "caption": "Dil se bura lagta hai bhai",
+  "img": "stickers/dil-se-bura.webp",
+  "sound": "sounds/dil-se-bura.mp3",
+  "dur": 3.5
+ },
+ {
+  "id": "apun-bhagwan",
+  "pack": "trend",
+  "caption": "Apun hi bhagwan hai",
+  "img": "stickers/apun-bhagwan.webp",
+  "sound": "sounds/apun-bhagwan.mp3",
+  "dur": 2.49
+ },
+ {
+  "id": "kaun-hai-ye-log",
+  "pack": "trend",
+  "caption": "Kaun hai ye log? Kahan se aate hain?",
+  "img": "stickers/kaun-hai-ye-log.webp",
+  "sound": "sounds/kaun-hai-ye-log.mp3",
+  "dur": 2.54
+ },
+ {
+  "id": "kis-line-mein",
+  "pack": "trend",
+  "caption": "Bhai sahab ye kis line mein aa gaye aap?",
+  "img": "stickers/kis-line-mein.webp",
+  "sound": "sounds/kis-line-mein.mp3",
+  "dur": 2.6
+ },
+ {
+  "id": "risk-nahi",
+  "pack": "trend",
+  "caption": "Bilkul risk nahi lene ka",
+  "img": "stickers/risk-nahi.webp",
+  "sound": "sounds/risk-nahi.mp3",
+  "dur": 1.66
+ },
+ {
+  "id": "baburao-style",
+  "pack": "trend",
+  "caption": "Ye Baburao ka style hai",
+  "img": "stickers/baburao-style.webp",
+  "sound": "sounds/baburao-style.mp3",
+  "dur": 2.66
+ },
+ {
+  "id": "mummy-kasam",
+  "pack": "trend",
+  "caption": "Mummy kasam!",
+  "img": "stickers/mummy-kasam.webp",
+  "sound": "sounds/mummy-kasam.mp3",
+  "dur": 2.3
+ },
+ {
+  "id": "kaand",
+  "pack": "trend",
+  "caption": "Ho gaya kaand",
+  "img": "stickers/kaand.webp",
+  "sound": "sounds/kaand.mp3",
+  "dur": 2.09
+ },
+ {
+  "id": "thak-gaya",
+  "pack": "trend",
+  "caption": "Main thak gaya hoon",
+  "img": "stickers/thak-gaya.webp",
+  "sound": "sounds/thak-gaya.mp3",
+  "dur": 3.24
+ },
+ {
+  "id": "sahi-khel-gaya",
+  "pack": "trend",
+  "caption": "Sahi khel gaya bhai",
+  "img": "stickers/sahi-khel-gaya.webp",
+  "sound": "sounds/sahi-khel-gaya.mp3",
+  "dur": 2.4
+ },
+ {
   "id": "bruh",
   "pack": "og",
   "caption": "Bruh.",

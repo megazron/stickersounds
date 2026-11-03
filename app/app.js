@@ -1,6 +1,8 @@
 /* StickerSounds: chat demo with sound stickers. Plain JS, no build step. Chats live in localStorage,
    your own stickers (image + sound blobs) in IndexedDB, so nothing leaves the device. */
 'use strict';
+const SPK = '<svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 9h4l5-4v14l-5-4H3z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
+const MUTE = '<svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 9h4l5-4v14l-5-4H3z"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 const $ = s => document.querySelector(s);
 const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -9,10 +11,10 @@ const hhmm = t => new Date(t).toLocaleTimeString([], { hour: '2-digit', minute: 
 const pick = a => a[Math.floor(Math.random() * a.length)];
 
 const CHATS = [
-  { id: 'gang', name: 'Meme Gang 🔥', avatar: '🔥', bg: '#ff8a3d', sub: 'Rohan, Priya, Kabir, You', group: true, pack: 'desi',
-    members: [{ n: 'Rohan', c: '#7fd1ff' }, { n: 'Priya', c: '#ff9ad5' }, { n: 'Kabir', c: '#7ee08a' }] },
-  { id: 'rohan', name: 'Rohan', avatar: '😎', bg: '#5b3fd6', sub: 'online', pack: 'desi', members: [{ n: 'Rohan', c: '#7fd1ff' }] },
-  { id: 'sam', name: 'Sam (London)', avatar: '🫖', bg: '#2a9d8f', sub: 'online', pack: 'og', members: [{ n: 'Sam', c: '#ffd166' }] },
+  { id: 'gang', name: 'Meme Gang', avatar: 'MG', bg: '#3dfa46', sub: 'Rohan, Priya, Kabir, You', group: true, pack: 'desi',
+    members: [{ n: 'Rohan', c: '#7ffcd5' }, { n: 'Priya', c: '#ffb300' }, { n: 'Kabir', c: '#3dfa46' }] },
+  { id: 'rohan', name: 'Rohan', avatar: 'RO', bg: '#7ffcd5', sub: 'online', pack: 'desi', members: [{ n: 'Rohan', c: '#7ffcd5' }] },
+  { id: 'sam', name: 'Sam (London)', avatar: 'SA', bg: '#ffb300', sub: 'online', pack: 'og', members: [{ n: 'Sam', c: '#ffb300' }] },
 ];
 const SEED = {
   gang: [['Priya', 't', 'Kal ka plan cancel ho gaya 😭'], ['Rohan', 's', 'moye-moye'], ['Kabir', 't', 'Fir se? 💀'], ['Kabir', 's', 'kya-ho-raha']],
@@ -60,12 +62,12 @@ function msgsOf(c) {
   if (!m) { const t0 = now() - 3600e3; m = SEED[c.id].map(([from, k, v], i) => ({ from, k, v, t: t0 + i * 60e3 })); store.set(c.id, m); }
   return m;
 }
-function preview(m) { if (!m) return ''; const who = m.from === 'me' ? 'You: ' : ''; return who + (m.k === 's' ? '🔊 Sound sticker' : m.v); }
+function preview(m) { if (!m) return ''; const who = m.from === 'me' ? 'You: ' : ''; return who + (m.k === 's' ? '[SOUND STICKER]' : m.v); }
 function renderList() {
   const box = $('#chats'); box.innerHTML = '';
   CHATS.forEach(c => { const m = msgsOf(c); const last = m[m.length - 1];
     const row = el('div', 'chatrow' + (cur && cur.id === c.id ? ' on' : ''),
-      `<div class="avatar" style="background:${c.bg}">${c.avatar}</div><div class="meta"><b>${esc(c.name)}</b><small>${esc(preview(last))}</small></div><small>${last ? hhmm(last.t) : ''}</small>`);
+      `<div class="avatar" style="background:${c.bg}">${c.avatar}</div><div class="meta"><b>${esc(c.name)}</b><small>${esc(preview(last))}</small></div><small class="t">${last ? hhmm(last.t) : ''}</small>`);
     row.onclick = () => openChat(c.id); box.appendChild(row); });
 }
 
@@ -97,17 +99,17 @@ function push(m, sound) {
 let replyTimer = null;
 function friendReply() {
   clearTimeout(replyTimer); const chat = cur; const who = pick(chat.members);
-  const typing = el('div', 'typing', `${esc(chat.group ? who.n : chat.name)} is typing…`);
+  const typing = el('div', 'typing', `${esc(chat.group ? who.n : chat.name)} is typing`);
   replyTimer = setTimeout(() => { if (cur !== chat) return; $('#msgs').appendChild(typing); $('#msgs').scrollTop = 1e9;
     replyTimer = setTimeout(() => { typing.remove(); if (cur !== chat) return;
-      const useSticker = Math.random() < .6; const pool = STICKERS.filter(s => s.pack === chat.pack);
+      const useSticker = Math.random() < .6; const pool = STICKERS.filter(s => chat.pack === 'desi' ? (s.pack === 'desi' || s.pack === 'trend') : s.pack === chat.pack);
       push(useSticker ? { from: who.n, k: 's', v: pick(pool).id, t: now() } : { from: who.n, k: 't', v: pick(REPLIES[chat.pack]), t: now() }, true);
     }, 1100 + Math.random() * 900); }, 700);
 }
 
 /* ---------- open / close ---------- */
 function openChat(id) {
-  cur = CHATS.find(c => c.id === id); tab = cur.pack;
+  cur = CHATS.find(c => c.id === id); tab = cur.pack === 'desi' ? 'trend' : cur.pack;
   $('#chat').hidden = false; $('#app').classList.add('inchat');
   $('#chatName').textContent = cur.name; $('#chatSub').textContent = cur.sub;
   const av = $('#chatAvatar'); av.textContent = cur.avatar; av.style.background = cur.bg;
@@ -124,7 +126,7 @@ $('#stickerBtn').onclick = () => { const t = $('#tray'); t.hidden = !t.hidden; $
 $('#text').onfocus = () => { if (matchMedia('(max-width:760px)').matches) closeTray(); };
 function renderTray() {
   const tabs = $('#tabs'); tabs.innerHTML = '';
-  [['desi', '🌶️ Desi'], ['og', '😂 OG + Trending'], ['mine', '⭐ Mine']].forEach(([k, label]) => {
+  [['trend', 'Desi Trending'], ['desi', 'Desi Classics'], ['og', 'OG + Trending'], ['mine', 'Mine']].forEach(([k, label]) => {
     const b = el('button', tab === k ? 'on' : '', label); b.type = 'button'; b.onclick = () => { tab = k; renderTray(); }; tabs.appendChild(b); });
   const grid = $('#grid'); grid.innerHTML = '';
   const list = tab === 'mine' ? MINE : STICKERS.filter(s => s.pack === tab);
@@ -133,14 +135,14 @@ function renderTray() {
   list.forEach(s => {
     const b = el('button', 'ts', `<img src="${s.img}" alt="${esc(s.caption)}" loading="lazy">`); b.type = 'button'; b.title = s.caption + ' (tap to send)';
     b.onclick = () => { push({ from: 'me', k: 's', v: s.id, t: now() }, true); friendReply(); };
-    const pv = el('button', 'pv', '🔊'); pv.type = 'button'; pv.title = 'Preview sound';
+    const pv = el('button', 'pv', SPK); pv.type = 'button'; pv.title = 'Preview sound';
     pv.onclick = e => { e.stopPropagation(); play(s.id, null); }; b.appendChild(pv);
     if (tab === 'mine') { const d = el('button', 'del', '✕'); d.type = 'button'; d.title = 'Delete';
       d.onclick = async e => { e.stopPropagation(); if (!confirm('Delete this sticker?')) return; await tx('readwrite', st => st.delete(s.id)); await loadMine(); renderTray(); };
       b.appendChild(d); }
     grid.appendChild(b); });
 }
-function setSoundBtn() { $('#soundBtn').textContent = autoPlay ? '🔊' : '🔇'; $('#soundBtn').title = autoPlay ? 'Sticker sounds auto-play (tap to mute)' : 'Sticker sounds muted (tap a sticker to play)'; }
+function setSoundBtn() { $('#soundBtn').innerHTML = autoPlay ? SPK : MUTE; $('#soundBtn').title = autoPlay ? 'Sticker sounds auto-play (tap to mute)' : 'Sticker sounds muted (tap a sticker to play)'; }
 $('#soundBtn').onclick = () => { autoPlay = !autoPlay; localStorage.setItem('stickersounds.auto', autoPlay ? '1' : '0'); setSoundBtn(); };
 $('#infoBtn').onclick = () => $('#about').showModal();
 
@@ -154,7 +156,7 @@ function drawMaker() {
     g.save(); g.beginPath(); g.roundRect((512 - w) / 2, (512 - h) / 2, w, h, 36); g.clip(); g.drawImage(mk.img, (512 - w) / 2, (512 - h) / 2, w, h); g.restore();
     g.lineWidth = 14; g.strokeStyle = '#fff'; g.beginPath(); g.roundRect((512 - w) / 2, (512 - h) / 2, w, h, 36); g.stroke(); }
   const cap = $('#mkCap').value.trim();
-  if (cap) { let fs = cap.length > 22 ? 40 : 54; g.font = `800 ${fs}px Baloo, sans-serif`; g.textAlign = 'center';
+  if (cap) { let fs = cap.length > 22 ? 40 : 54; g.font = `italic 800 ${fs}px Disp, sans-serif`; g.textAlign = 'center';
     g.lineJoin = 'round'; g.lineWidth = 12; g.strokeStyle = '#1b1b2f'; g.fillStyle = '#fff';
     g.strokeText(cap, 256, 480, 490); g.fillText(cap, 256, 480, 490); }
 }

@@ -20,4 +20,4 @@ Other files have their own licences:
   (hi_IN pratham and priyamvada: AI4Bharat IndicTTS / indicnlp corpus; en_US ryan: RyanSpeech). Sound effects are
   synthesized in tools/make_stickers.py.
 - app/stickers/*.webp: original drawings, CC BY-NC-SA 4.0.
-- app/fonts/baloo2-*.woff2: Baloo 2, SIL Open Font License 1.1 (app/fonts/OFL.txt).
+- app/fonts/*.woff2: Baloo 2, Barlow Condensed and Share Tech Mono, SIL Open Font License 1.1 (app/fonts/OFL*.txt).
